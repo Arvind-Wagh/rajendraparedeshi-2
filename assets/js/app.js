@@ -1,13 +1,6 @@
-/**
- * DR. RAJENDRASINGH PARDESHI - OFFICIAL APPLICATION ENGINE
- * Domain: rajendrasinghpardeshi.com
- * Contact: +91 7796211575 | info@rajendrasinghpardeshi.com
- * Reference Initiative: menopauseosteoporosisclinic.com
- */
+
 
 document.addEventListener('DOMContentLoaded', () => {
-
-  // ── Header Scroll Behavior ──────────────────────────────────────────
   const header = document.getElementById('mainHeader');
   
   function handleHeaderScroll() {
@@ -21,8 +14,6 @@ document.addEventListener('DOMContentLoaded', () => {
   
   window.addEventListener('scroll', handleHeaderScroll, { passive: true });
   handleHeaderScroll();
-
-  // ── Mobile Navigation Toggle ────────────────────────────────────────
   const mobileToggle = document.getElementById('mobileMenuToggle');
   const mainNav = document.getElementById('mainNav');
 
@@ -30,25 +21,32 @@ document.addEventListener('DOMContentLoaded', () => {
     mobileToggle.addEventListener('click', () => {
       const isExpanded = mainNav.classList.toggle('active');
       mobileToggle.setAttribute('aria-expanded', isExpanded ? 'true' : 'false');
+      mobileToggle.setAttribute('aria-label', isExpanded ? 'Close menu' : 'Open menu');
       
       mobileToggle.innerHTML = isExpanded
         ? '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>'
         : '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>';
     });
-
-    // Close mobile nav on link click
     document.querySelectorAll('.nav-link').forEach(link => {
       link.addEventListener('click', () => {
         if (mainNav.classList.contains('active')) {
           mainNav.classList.remove('active');
           mobileToggle.setAttribute('aria-expanded', 'false');
+          mobileToggle.setAttribute('aria-label', 'Open menu');
           mobileToggle.innerHTML = '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>';
         }
       });
     });
-  }
 
-  // ── Active Navigation State Tracking ─────────────────────────────────
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && mainNav.classList.contains('active')) {
+        mainNav.classList.remove('active');
+        mobileToggle.setAttribute('aria-expanded', 'false');
+        mobileToggle.setAttribute('aria-label', 'Open menu');
+        mobileToggle.focus();
+      }
+    });
+  }
   const sections = document.querySelectorAll('section[id]');
   const navLinks = document.querySelectorAll('.nav-link');
 
@@ -70,8 +68,6 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   sections.forEach(sec => navObserver.observe(sec));
-
-  // ── Smooth Scrolling for In-Page Anchor Links ────────────────────────
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
       const targetId = this.getAttribute('href');
@@ -79,6 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const targetElement = document.querySelector(targetId);
       if (targetElement) {
         e.preventDefault();
+        window.history.pushState(null, '', targetId);
         const headerOffset = header ? header.offsetHeight : 80;
         const targetPos = targetElement.getBoundingClientRect().top + window.scrollY - headerOffset - 12;
         window.scrollTo({
@@ -88,31 +85,46 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   });
-
-  // ── Tab Navigation for Professional Profile / Credentials ────────────
   const tabButtons = document.querySelectorAll('.credential-tab-btn');
   const tabPanes = document.querySelectorAll('.tab-pane');
 
-  tabButtons.forEach(button => {
-    button.addEventListener('click', () => {
+  function activateTab(button) {
       const targetTab = button.getAttribute('data-tab');
 
       tabButtons.forEach(btn => {
         btn.classList.remove('active');
         btn.setAttribute('aria-selected', 'false');
+        btn.setAttribute('tabindex', '-1');
       });
-      tabPanes.forEach(pane => pane.classList.remove('active'));
+      tabPanes.forEach(pane => {
+        pane.classList.remove('active');
+        pane.setAttribute('hidden', '');
+      });
 
       button.classList.add('active');
       button.setAttribute('aria-selected', 'true');
+      button.setAttribute('tabindex', '0');
       const activePane = document.getElementById(`tab-${targetTab}`);
       if (activePane) {
         activePane.classList.add('active');
+        activePane.removeAttribute('hidden');
       }
+  }
+
+  tabButtons.forEach((button, index) => {
+    button.addEventListener('click', () => activateTab(button));
+    button.addEventListener('keydown', (event) => {
+      let nextIndex = index;
+      if (event.key === 'ArrowRight') nextIndex = (index + 1) % tabButtons.length;
+      else if (event.key === 'ArrowLeft') nextIndex = (index - 1 + tabButtons.length) % tabButtons.length;
+      else if (event.key === 'Home') nextIndex = 0;
+      else if (event.key === 'End') nextIndex = tabButtons.length - 1;
+      else return;
+      event.preventDefault();
+      tabButtons[nextIndex].focus();
+      activateTab(tabButtons[nextIndex]);
     });
   });
-
-  // ── Scroll Reveal System ─────────────────────────────────────────────
   const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .stagger-children');
   
   const revealObserver = new IntersectionObserver((entries) => {
@@ -128,8 +140,6 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   revealElements.forEach(el => revealObserver.observe(el));
-
-  // ── Back to Top Button ───────────────────────────────────────────────
   const backToTopBtn = document.getElementById('fabTop');
   if (backToTopBtn) {
     window.addEventListener('scroll', () => {
@@ -140,8 +150,6 @@ document.addEventListener('DOMContentLoaded', () => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
   }
-
-  // ── Honest Form Submission Handler (Email Fallback) ───────────────────
   const contactForm = document.getElementById('contactForm');
   const formStatusNote = document.getElementById('formStatusNote');
 
@@ -149,6 +157,11 @@ document.addEventListener('DOMContentLoaded', () => {
     contactForm.addEventListener('submit', (event) => {
       event.preventDefault();
       
+      const nameInput = contactForm.elements.namedItem('name');
+      const phoneInput = contactForm.elements.namedItem('phone');
+      nameInput.setCustomValidity(nameInput.value.trim().length < 2 ? 'Please enter your name.' : '');
+      const phoneDigits = phoneInput.value.replace(/\D/g, '');
+      phoneInput.setCustomValidity(phoneDigits.length < 7 || phoneDigits.length > 15 ? 'Enter a phone number with 7 to 15 digits.' : '');
       if (!contactForm.reportValidity()) return;
 
       const formData = new FormData(contactForm);
@@ -157,7 +170,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const phone = formData.get('phone') || '';
       const area = formData.get('interest') || 'General Clinical Focus';
       const message = formData.get('message') || 'No additional message provided.';
-      const rcsConsent = formData.get('rcs_consent') === 'yes' ? 'Granted' : 'Not specified';
+      const messagingConsent = formData.get('rcs_consent') === 'yes' ? 'Yes' : 'No';
 
       const subject = `Consultation Enquiry: Dr. Rajendrasingh Pardeshi - ${name}`;
       const emailBody = [
@@ -168,60 +181,18 @@ document.addEventListener('DOMContentLoaded', () => {
         `Message / Details:`,
         `${message}`,
         ``,
-        `Communication via RCS Consent: ${rcsConsent}`,
-        `Sent via rajendrasinghpardeshi.com official contact form.`
+        `Optional SMS/RCS/WhatsApp consent: ${messagingConsent}`,
+        `Prepared by the website enquiry form. This email has not been sent by the website.`
       ].join('\n');
 
       const mailtoLink = `mailto:info@rajendrasinghpardeshi.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(emailBody)}`;
       
-      // Inform the user honestly without fake success state
       if (formStatusNote) {
-        formStatusNote.innerHTML = '<span style="color: #0d766e; font-weight: 600;">Opening your email client with your prefilled consultation details. Please send the email to complete your enquiry.</span>';
+        formStatusNote.textContent = 'Your email application should open with a draft. Review it and send it to complete your enquiry. The website has not sent your message.';
       }
 
-      window.location.href = mailtoLink;
+      window.location.assign(mailtoLink);
     });
   }
-
-  // ── Verified Number Counter Animation ────────────────────────────────
-  const counterCards = document.querySelectorAll('.metric-card');
-  const counterObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const valElem = entry.target.querySelector('.metric-value');
-        if (valElem) {
-          const rawText = valElem.textContent.trim();
-          const match = rawText.match(/^([\d,]+)/);
-          if (match) {
-            const targetNum = parseInt(match[1].replace(/,/g, ''), 10);
-            const suffix = rawText.replace(match[1], '');
-            const duration = 1600;
-            const startTime = performance.now();
-
-            function easeOutQuart(t) {
-              return 1 - Math.pow(1 - t, 4);
-            }
-
-            function updateCounter(currentTime) {
-              const elapsed = currentTime - startTime;
-              const progress = Math.min(elapsed / duration, 1);
-              const currentVal = Math.round(easeOutQuart(progress) * targetNum);
-              valElem.textContent = currentVal.toLocaleString() + suffix;
-
-              if (progress < 1) {
-                requestAnimationFrame(updateCounter);
-              }
-            }
-
-            valElem.textContent = '0' + suffix;
-            requestAnimationFrame(updateCounter);
-          }
-        }
-        counterObserver.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.3 });
-
-  counterCards.forEach(card => counterObserver.observe(card));
 
 });

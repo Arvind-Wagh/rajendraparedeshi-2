@@ -1,81 +1,76 @@
-/* ==========================================================================
-   DR. RAJENDRASINGH PARDESHI - PREMIUM MEDICAL DESIGN SYSTEM
-   Domain: rajendrasinghpardeshi.com
-   Reference Initiative: menopauseosteoporosisclinic.com
-   Official Contact: +91 7796211575 | info@rajendrasinghpardeshi.com
-   ========================================================================== */
 
-/* ── CSS Custom Properties & Design Tokens ──────────────────────────────── */
+
+
 :root {
-  /* Brand Palette: Deep Navy & Muted Teal with Champagne Gold Accents */
-  --color-primary: #0a2540;          /* Deep Navy - Clinical Authority */
-  --color-primary-dark: #061727;     /* Midnight Navy */
-  --color-primary-light: #163e66;    /* Slate Navy */
-  
-  --color-secondary: #0d766e;        /* Muted Medical Teal - Healing & Vitality */
-  --color-secondary-dark: #0f5853;   /* Deep Teal */
-  --color-secondary-light: #14b8a6;  /* Soft Teal */
-  --color-secondary-tint: #f0fdfa;   /* Pale Teal Tint */
-  
-  --color-accent-gold: #c59b27;      /* Subtle Champagne Gold - Excellence */
-  --color-accent-gold-light: #fef9c3;/* Soft Gold Wash */
+
+  --color-primary: #0a2540;
+  --color-primary-dark: #061727;
+  --color-primary-light: #163e66;
+
+  --color-secondary: #0d766e;
+  --color-secondary-dark: #0f5853;
+  --color-secondary-light: #14b8a6;
+  --color-secondary-tint: #f0fdfa;
+
+  --color-accent-gold: #c59b27;
+  --color-accent-gold-light: #fef9c3;
   --color-accent-gold-subtle: #d4af37;
-  
-  /* Neutral Backgrounds */
-  --color-bg-main: #fbfbfc;          /* Warm White / Ivory */
-  --color-bg-card: #ffffff;          /* Pure White */
-  --color-bg-surface-alt: #f4f6f8;   /* Very Light Grey */
-  --color-bg-surface-tint: #f0f4f8;  /* Crisp Sub-surface */
-  --color-bg-dark: #061727;          /* Premium Deep Footer / Header Contrast */
-  
-  /* Typography Colors */
-  --color-text-main: #1e293b;        /* Dark Slate */
-  --color-text-heading: #0a2540;     /* Deep Navy */
-  --color-text-muted: #475569;       /* Slate Grey */
-  --color-text-light: #64748b;       /* Cool Grey */
+
+
+  --color-bg-main: #fbfbfc;
+  --color-bg-card: #ffffff;
+  --color-bg-surface-alt: #f4f6f8;
+  --color-bg-surface-tint: #f0f4f8;
+  --color-bg-dark: #061727;
+
+
+  --color-text-main: #1e293b;
+  --color-text-heading: #0a2540;
+  --color-text-muted: #475569;
+  --color-text-light: #64748b;
   --color-text-white: #ffffff;
-  
-  /* Border & Dividers */
-  --color-border-subtle: #e2e8f0;    /* Crisp light border */
-  --color-border-focus: #0d766e;     /* Teal interactive focus */
-  --color-border-gold: #e2cca0;      /* Fine Gold border */
-  
-  /* System UI Colors */
+
+
+  --color-border-subtle: #e2e8f0;
+  --color-border-focus: #0d766e;
+  --color-border-gold: #e2cca0;
+
+
   --color-success: #059669;
   --color-whatsapp: #128c7e;
   --color-whatsapp-hover: #075e54;
   --color-phone: #0a2540;
-  
-  /* Typography Stack */
-  --font-serif: 'Playfair Display', Georgia, serif; /* Editorial & Heading Luxury */
-  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; /* High Legibility Body */
-  
-  /* Radii - Refined, subtle, avoiding excessive pill curves */
+
+
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+
   --radius-xs: 4px;
   --radius-sm: 8px;
   --radius-md: 12px;
   --radius-lg: 16px;
   --radius-xl: 24px;
   --radius-pill: 9999px;
-  
-  /* Sophisticated Soft Shadows (No harsh glows) */
+
+
   --shadow-subtle: 0 1px 3px rgba(10, 37, 64, 0.05);
   --shadow-card: 0 4px 20px -2px rgba(10, 37, 64, 0.06), 0 2px 6px -1px rgba(10, 37, 64, 0.04);
   --shadow-hover: 0 12px 32px -4px rgba(10, 37, 64, 0.12), 0 4px 10px -2px rgba(10, 37, 64, 0.04);
   --shadow-modal: 0 25px 50px -12px rgba(10, 37, 64, 0.25);
-  
-  /* Layout Spacing */
+
+
   --container-max: 1240px;
   --header-height: 84px;
   --topbar-height: 40px;
-  
-  /* Motion & Transitions */
+
+
   --transition-fast: 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   --transition-base: 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   --transition-slow: 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* ── Reset & Foundation ─────────────────────────────────────────────────── */
+
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
@@ -123,7 +118,7 @@ ul, ol {
   list-style: none;
 }
 
-/* ── Accessibility ──────────────────────────────────────────────────────── */
+
 .skip-link {
   position: absolute;
   top: -60px;
@@ -146,7 +141,7 @@ ul, ol {
   outline-offset: 3px;
 }
 
-/* ── Global Layout Container ────────────────────────────────────────────── */
+
 .container {
   width: 100%;
   max-width: var(--container-max);
@@ -174,7 +169,7 @@ ul, ol {
   color: #ffffff;
 }
 
-/* ── Typography & Section Headers ───────────────────────────────────────── */
+
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-serif);
   color: var(--color-text-heading);
@@ -246,7 +241,7 @@ h1, h2, h3, h4, h5, h6 {
   color: #cbd5e1;
 }
 
-/* ── Buttons & CTAs ─────────────────────────────────────────────────────── */
+
 .btn {
   display: inline-flex;
   align-items: center;
@@ -348,7 +343,7 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 1rem;
 }
 
-/* ── Top Announcement & Contact Bar ─────────────────────────────────────── */
+
 .topbar {
   background-color: var(--color-primary-dark);
   color: #cbd5e1;
@@ -398,7 +393,7 @@ h1, h2, h3, h4, h5, h6 {
   color: #fef08a;
 }
 
-/* ── Main Navigation Header ─────────────────────────────────────────────── */
+
 .main-header {
   position: sticky;
   top: 0;
@@ -529,7 +524,7 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--color-primary);
 }
 
-/* ── Hero Section ───────────────────────────────────────────────────────── */
+
 .hero-section {
   position: relative;
   padding: 72px 0 88px 0;
@@ -650,7 +645,7 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--color-text-light);
 }
 
-/* Hero Portrait Articulation */
+
 .hero-media-wrapper {
   position: relative;
   display: flex;
@@ -721,15 +716,17 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 1.25;
 }
 
-/* ── Doctor Editorial Profile (Inspired by Lilavati Presentation) ────────── */
+
 .doctor-editorial-grid {
   display: grid;
-  grid-template-columns: 0.9fr 1.1fr;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
   gap: 60px;
   align-items: start;
+  min-width: 0;
 }
 
 .editorial-sidebar-card {
+  min-width: 0;
   background-color: #ffffff;
   border: 1px solid var(--color-border-subtle);
   border-radius: var(--radius-lg);
@@ -802,6 +799,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .editorial-main-content {
+  min-width: 0;
   display: flex;
   flex-direction: column;
   gap: 32px;
@@ -841,20 +839,7 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: 20px;
 }
 
-.editorial-quote {
-  font-family: var(--font-serif);
-  font-size: 1.25rem;
-  line-height: 1.6;
-  font-style: italic;
-  color: var(--color-primary);
-  padding: 20px 24px;
-  background-color: var(--color-bg-surface-alt);
-  border-radius: var(--radius-sm);
-  border-left: 3px solid var(--color-accent-gold);
-  margin: 28px 0;
-}
 
-/* ── Clinical Credentials & Structured Profile ──────────────────────────── */
 .credentials-tabs-wrap {
   background-color: #ffffff;
   border: 1px solid var(--color-border-subtle);
@@ -957,7 +942,7 @@ h1, h2, h3, h4, h5, h6 {
   margin-top: 4px;
 }
 
-/* ── Areas of Clinical Focus ────────────────────────────────────────────── */
+
 .focus-cards-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -1029,7 +1014,7 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--color-secondary-dark);
 }
 
-/* ── Spotlight: Menopause & Osteoporosis Clinic ─────────────────────────── */
+
 .clinic-spotlight-card {
   background-color: #ffffff;
   border-radius: var(--radius-xl);
@@ -1040,10 +1025,13 @@ h1, h2, h3, h4, h5, h6 {
 
 .clinic-spotlight-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  min-width: 0;
 }
 
 .clinic-media-pane {
+  min-width: 0;
+  width: 100%;
   position: relative;
   background-color: #061727;
   min-height: 480px;
@@ -1074,6 +1062,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .clinic-details-pane {
+  min-width: 0;
+  width: 100%;
   padding: 56px 48px;
   display: flex;
   flex-direction: column;
@@ -1103,6 +1093,11 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 600;
   color: var(--color-secondary);
   margin-bottom: 20px;
+}
+
+.clinic-portal-pill,
+.clinic-portal-pill a {
+  overflow-wrap: anywhere;
 }
 .clinic-portal-pill a {
   text-decoration: underline;
@@ -1144,7 +1139,7 @@ h1, h2, h3, h4, h5, h6 {
   flex-wrap: wrap;
 }
 
-/* ── Verified Clinical Overview / At A Glance ───────────────────────────── */
+
 .overview-metrics-strip {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -1187,80 +1182,7 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--color-text-light);
 }
 
-/* ── Patient Perspectives (Editorial Quote Grid) ────────────────────────── */
-.testimonials-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 28px;
-}
 
-.testimonial-card {
-  background-color: #ffffff;
-  border: 1px solid var(--color-border-subtle);
-  border-radius: var(--radius-md);
-  padding: 36px 30px;
-  box-shadow: var(--shadow-subtle);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  position: relative;
-}
-
-.testimonial-quote-icon {
-  font-family: var(--font-serif);
-  font-size: 3rem;
-  line-height: 1;
-  color: var(--color-secondary-tint);
-  position: absolute;
-  top: 20px;
-  right: 24px;
-}
-
-.testimonial-text {
-  font-size: 0.98rem;
-  line-height: 1.75;
-  color: var(--color-text-muted);
-  font-style: italic;
-  margin-bottom: 24px;
-  position: relative;
-  z-index: 1;
-}
-
-.testimonial-author-block {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  border-top: 1px solid var(--color-border-subtle);
-  padding-top: 18px;
-}
-
-.author-initials {
-  width: 44px;
-  height: 44px;
-  border-radius: var(--radius-pill);
-  background-color: var(--color-secondary-tint);
-  color: var(--color-secondary-dark);
-  font-weight: 700;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.95rem;
-}
-
-.author-info h4 {
-  font-family: var(--font-sans);
-  font-size: 0.95rem;
-  font-weight: 700;
-  color: var(--color-primary);
-  line-height: 1.2;
-}
-
-.author-info p {
-  font-size: 0.78rem;
-  color: var(--color-text-light);
-}
-
-/* ── Educational Insights & Patient Guidance ────────────────────────────── */
 .education-cards-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -1347,15 +1269,18 @@ h1, h2, h3, h4, h5, h6 {
   gap: 6px;
 }
 
-/* ── Contact, Clinic Map & Honest Enquiry Form ──────────────────────────── */
+
 .contact-layout-grid {
   display: grid;
-  grid-template-columns: 1fr 1.15fr;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
   gap: 48px;
   align-items: start;
+  min-width: 0;
 }
 
 .contact-channels-card {
+  min-width: 0;
+  width: 100%;
   background-color: #ffffff;
   border: 1px solid var(--color-border-subtle);
   border-radius: var(--radius-lg);
@@ -1398,6 +1323,11 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: 4px;
 }
 
+.channel-info {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
 .channel-info p, .channel-info a {
   font-size: 0.98rem;
   color: var(--color-text-main);
@@ -1422,8 +1352,10 @@ h1, h2, h3, h4, h5, h6 {
   display: block;
 }
 
-/* Enquiry Form Styling */
+
 .enquiry-form-card {
+  min-width: 0;
+  width: 100%;
   background-color: #ffffff;
   border: 1px solid var(--color-border-subtle);
   border-radius: var(--radius-lg);
@@ -1446,7 +1378,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .form-grid-fields {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: 18px;
   margin-bottom: 18px;
 }
@@ -1468,6 +1400,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .form-control {
+  min-width: 0;
   width: 100%;
   padding: 12px 16px;
   font-family: var(--font-sans);
@@ -1526,7 +1459,7 @@ textarea.form-control {
   font-style: italic;
 }
 
-/* ── Premium Footer ─────────────────────────────────────────────────────── */
+
 .site-footer {
   background-color: var(--color-bg-dark);
   color: #94a3b8;
@@ -1627,7 +1560,7 @@ textarea.form-control {
   color: #ffffff;
 }
 
-/* ── Floating Contact Actions ───────────────────────────────────────────── */
+
 .floating-actions-dock {
   position: fixed;
   bottom: 28px;
@@ -1677,7 +1610,7 @@ textarea.form-control {
   transform: translateY(-2px);
 }
 
-/* ── Scroll Reveal Animations ───────────────────────────────────────────── */
+
 .reveal {
   opacity: 0;
   transform: translateY(24px);
@@ -1703,7 +1636,7 @@ textarea.form-control {
   transform: translate(0, 0);
 }
 
-/* Stagger helper */
+
 .stagger-children > * {
   opacity: 0;
   transform: translateY(20px);
@@ -1715,7 +1648,7 @@ textarea.form-control {
 .stagger-children.visible > *:nth-child(3) { transition-delay: 0.19s; opacity: 1; transform: translateY(0); }
 .stagger-children.visible > *:nth-child(4) { transition-delay: 0.26s; opacity: 1; transform: translateY(0); }
 
-/* ── Legal Page Styles ──────────────────────────────────────────────────── */
+
 .legal-page {
   padding: 64px 0 96px 0;
   background-color: var(--color-bg-main);
@@ -1766,16 +1699,6 @@ textarea.form-control {
   margin-bottom: 20px;
 }
 
-.compliance-notice {
-  background-color: #fffbeb;
-  border-left: 4px solid var(--color-accent-gold);
-  padding: 16px 20px;
-  border-radius: 0 var(--radius-xs) var(--radius-xs) 0;
-  margin: 28px 0;
-  font-size: 0.88rem;
-  color: #78350f;
-}
-
 .legal-nav {
   margin-top: 40px;
   padding-top: 24px;
@@ -1791,9 +1714,9 @@ textarea.form-control {
   color: var(--color-secondary);
 }
 
-/* ── Responsive Adaptations ─────────────────────────────────────────────── */
 
-/* Large tablets & small laptops (1024px and below) */
+
+
 @media (max-width: 1024px) {
   .topbar {
     display: none;
@@ -1820,7 +1743,7 @@ textarea.form-control {
     transition: transform 0.3s ease, opacity 0.3s ease, visibility 0s linear 0.3s;
     z-index: 999;
   }
-  
+
   .main-nav.active {
     transform: translateY(0);
     opacity: 1;
@@ -1829,11 +1752,11 @@ textarea.form-control {
     transition: transform 0.3s ease, opacity 0.3s ease, visibility 0s linear 0s;
   }
 
-  /* Prevent hidden nav links from receiving keyboard focus */
+
   .main-nav:not(.active) .nav-link {
     visibility: hidden;
   }
-  
+
   .nav-link {
     width: 100%;
     font-size: 1rem;
@@ -1852,8 +1775,8 @@ textarea.form-control {
     align-items: center;
     justify-content: center;
   }
-  
-  /* Header CTA: hide text buttons, only keep hamburger on mobile */
+
+
   .header-cta-group .btn {
     display: none;
   }
@@ -1865,183 +1788,209 @@ textarea.form-control {
     grid-template-columns: 1fr;
     gap: 40px;
   }
-  
+
   .hero-media-wrapper {
     order: -1;
   }
-  
+
   .hero-portrait-frame {
     max-width: 360px;
   }
-  
+
   .hero-image-box {
     height: 400px;
   }
-  
+
   .hero-eyebrow-pill {
     flex-wrap: wrap;
   }
-  
+
   .hero-credibility-strip {
     flex-direction: column;
     align-items: flex-start;
     gap: 16px;
   }
-  
+
   .doctor-editorial-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     gap: 40px;
   }
-  
+
   .editorial-sidebar-card {
     position: static;
   }
-  
+
   .sidebar-doctor-portrait {
     height: 320px;
   }
-  
+
   .focus-cards-grid {
     grid-template-columns: repeat(2, 1fr);
   }
-  
+
   .clinic-spotlight-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
-  
+
   .clinic-media-pane {
     min-height: 280px;
   }
-  
+
   .clinic-details-pane {
     padding: 36px 24px;
   }
-  
+
   .clinic-pillars-list {
     grid-template-columns: 1fr;
   }
-  
+
   .overview-metrics-strip {
     grid-template-columns: repeat(2, 1fr);
   }
-  
-  .testimonials-grid,
+
   .education-cards-grid {
     grid-template-columns: repeat(2, 1fr);
   }
-  
+
   .contact-layout-grid {
     grid-template-columns: 1fr;
     gap: 36px;
   }
-  
+
   .footer-top-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 36px;
   }
 }
 
-/* Tablets & large phones (768px and below) */
+
 @media (max-width: 768px) {
   .main-header {
     height: 68px;
     --header-height: 68px;
   }
-  
+
+  .reveal-left,
+  .reveal-right {
+    transform: translateY(20px);
+  }
+
   .main-nav {
     top: 68px;
   }
-  
+
   .hero-section {
     padding: 48px 0 64px;
   }
-  
+
   .hero-cta-row {
     flex-direction: column;
     width: 100%;
   }
-  
+
   .hero-cta-row .btn {
     width: 100%;
   }
-  
+
   .contact-channels-card,
   .enquiry-form-card {
     padding: 28px 20px;
   }
-  
+
   .form-grid-fields {
     grid-template-columns: 1fr;
   }
-  
-  .testimonials-grid,
+
   .education-cards-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .credentials-tab-body {
     padding: 24px 20px;
   }
-  
+
+  .sidebar-doctor-portrait {
+    width: min(100%, 220px);
+    height: 220px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .editorial-sidebar-card {
+    padding: 24px;
+  }
+
+  .floating-actions-dock {
+    right: 14px;
+    bottom: calc(14px + env(safe-area-inset-bottom));
+    flex-direction: row;
+    gap: 8px;
+  }
+
+  .float-btn {
+    width: 44px;
+    height: 44px;
+  }
+
   .footer-top-grid {
     grid-template-columns: 1fr;
     gap: 32px;
   }
-  
+
   .footer-bottom-bar {
     flex-direction: column;
     text-align: center;
     gap: 12px;
   }
-  
+
   .footer-legal-links {
     justify-content: center;
     flex-wrap: wrap;
   }
 }
 
-/* Mobile (480px and below) */
+
 @media (max-width: 480px) {
   .container {
     padding-left: 16px;
     padding-right: 16px;
   }
-  
+
   .section {
     padding: 56px 0;
   }
-  
+
   .brand-emblem {
     width: 36px;
     height: 36px;
     font-size: 0.95rem;
   }
-  
+
   .brand-name {
     font-size: 0.92rem;
   }
-  
+
   .brand-subtitle {
     font-size: 0.62rem;
   }
-  
+
   .hero-headline {
     font-size: 1.85rem;
   }
-  
+
   .hero-summary {
     font-size: 1rem;
   }
-  
+
   .hero-portrait-frame {
     max-width: 300px;
     padding: 10px;
   }
-  
+
   .hero-image-box {
     height: 340px;
   }
-  
+
   .hero-portrait-badge {
     position: relative;
     left: auto;
@@ -2051,66 +2000,66 @@ textarea.form-control {
     max-width: 100%;
     border-left: 3px solid var(--color-secondary);
   }
-  
+
   .focus-cards-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .overview-metrics-strip {
     grid-template-columns: 1fr;
   }
-  
+
   .clinic-actions-row {
     flex-direction: column;
   }
   .clinic-actions-row .btn {
     width: 100%;
   }
-  
+
   .metric-value {
     font-size: 2.2rem;
   }
-  
+
   .section-header {
     margin-bottom: 36px;
   }
-  
+
   .legal-card {
     padding: 28px 16px;
   }
 }
 
-/* Extra small mobile (360px and below) */
+
 @media (max-width: 360px) {
   .brand-name {
     font-size: 0.82rem;
   }
-  
+
   .brand-subtitle {
     display: none;
   }
-  
+
   .hero-headline {
     font-size: 1.65rem;
   }
-  
+
   .btn-lg {
     padding: 14px 20px;
     font-size: 0.92rem;
   }
-  
+
   .btn-sm {
     padding: 7px 12px;
     font-size: 0.82rem;
   }
-  
+
   .credential-tab-btn {
     padding: 14px 16px;
     font-size: 0.82rem;
   }
 }
 
-/* Reduced Motion Preference */
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
@@ -2118,14 +2067,14 @@ textarea.form-control {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
-  
+
   .reveal, .reveal-left, .reveal-right, .stagger-children > * {
     opacity: 1 !important;
     transform: none !important;
   }
 }
 
-/* No-JS fallback: show all reveals and nav when JS unavailable */
+
 .no-js .reveal,
 .no-js .reveal-left,
 .no-js .reveal-right,
